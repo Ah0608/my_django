@@ -1,0 +1,59 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Awesome后台注册</title>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/2.1.2/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'css/register.css' %}">
+</head>
+<body>
+<div class="container">
+    <div class="account">
+        <form class="form-register" method="post" action="{% url 'register' %}">
+            {% if message %}
+                <div class="alert alert-warning">{{ message }}</div>
+            {% endif %}
+            {% csrf_token %}
+            <h2 class="text-center">欢迎注册</h2>
+            <div class="form-group">
+                {{ register_form.username.label_tag }}
+                {{ register_form.username }}
+                <span class="res_tip" id="username_feedback"></span>
+            </div>
+            <div class="form-group">
+                {{ register_form.password.label_tag }}
+                {{ register_form.password }}
+                <span class="res_tip" id="password_feedback"></span>
+            </div>
+            <div class="form-group">
+                {{ register_form.confirm_pwd.label_tag }}
+                {{ register_form.confirm_pwd }}
+            </div>
+            <div class="form-group">
+                {{ register_form.email.label_tag }}
+                {{ register_form.email }}
+                <button type="button" id="sendButton" onclick="sendEmail()">获取验证码</button>
+                <span id="countdown"></span>
+            </div>
+            <div class="form-group">
+                {{ register_form.verifycode.label_tag }}
+                {{ register_form.verifycode }}
+            </div>
+            <div class="form-group">
+                {{ register_form.sex.label_tag }}
+                {{ register_form.sex }}
+            </div>
+            <div class="sub_buton">
+                <a class="btn btn-info" href="{% url 'login' %}">直接登录</a>
+                <button class="btn btn-info">注册</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script src="{% static 'js/register.js' %}"></script>
+
+</body>
+</html>

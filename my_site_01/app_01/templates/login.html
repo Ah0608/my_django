@@ -1,0 +1,46 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Awesome后台登录</title>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/2.1.2/jquery.min.js"></script>
+</head>
+<body>
+<div class="logo"></div>
+<div class="container">
+    <div class="col">
+        <form class="form-login" action="{% url 'login' %}" method="post">
+            {% csrf_token %}
+            <h2 class="text-center" style="font-size: 40px;font-family: 仿宋">欢迎登录</h2>
+            {% if message %}
+                <div class="alert alert-warning">{{ message }}</div>
+            {% endif %}
+            <div class="form-group">
+                {{ login_form.username.label_tag }}
+                {{ login_form.username }}
+            </div>
+
+            <div class="form-group">
+                {{ login_form.password.label_tag }}
+                {{ login_form.password }}
+            </div>
+
+            <div class="form-group">
+                {{ login_form.captcha.errors }}
+                {{ login_form.captcha.label_tag }}
+                {{ login_form.captcha }}
+            </div>
+
+            <div>
+                <a href="{% url 'register' %}" class="text-success">
+                    <ins>新用户注册</ins>
+                </a>
+                <button type="submit" class="btn btn-primary float-right">登录</button>
+            </div>
+        </form>
+    </div>
+</div>
+<script src="{% static 'js/login.js' %}"></script>
+</body>
+</html>
