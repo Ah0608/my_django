@@ -24,5 +24,4 @@ urlpatterns = [
     path("sendmeail/", views.sendmeail,name='sendmeail'),
     path('captcha/', include('captcha.urls'),name='captcha'),   # 增加这一行
     path('checkusername/', views.checkusername, name='checkusername'),
-    path('verifypassword/', views.verifypassword, name='verifypassword'),
 ]

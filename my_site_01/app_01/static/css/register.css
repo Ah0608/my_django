@@ -26,9 +26,13 @@ body {
 }
 
 .sub_buton {
-    padding: 0 0 10px 30px;
+    padding: 0 20px 15px 30px ;
 }
 
 .res_tip {
+    color: red;
+}
+
+.out_error {
     color: red;
 }

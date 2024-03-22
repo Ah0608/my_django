@@ -5,38 +5,42 @@
     <meta charset="UTF-8">
     <title>Awesome后台登录</title>
     <script src="https://cdn.bootcdn.net/ajax/libs/jquery/2.1.2/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
 </head>
 <body>
 <div class="logo"></div>
 <div class="container">
-    <div class="col">
+    <div class="account">
         <form class="form-login" action="{% url 'login' %}" method="post">
             {% csrf_token %}
-            <h2 class="text-center" style="font-size: 40px;font-family: 仿宋">欢迎登录</h2>
-            {% if message %}
-                <div class="alert alert-warning">{{ message }}</div>
-            {% endif %}
+            <h2 class="text-center">欢迎登录</h2>
             <div class="form-group">
                 {{ login_form.username.label_tag }}
                 {{ login_form.username }}
             </div>
-
             <div class="form-group">
                 {{ login_form.password.label_tag }}
                 {{ login_form.password }}
             </div>
-
             <div class="form-group">
                 {{ login_form.captcha.errors }}
                 {{ login_form.captcha.label_tag }}
                 {{ login_form.captcha }}
+                {% if messages %}
+                    {% for message in messages %}
+                        <span class="tips">{{ message }}</span>
+                    {% endfor %}
+                {% endif %}
             </div>
-
-            <div>
-                <a href="{% url 'register' %}" class="text-success">
-                    <ins>新用户注册</ins>
-                </a>
-                <button type="submit" class="btn btn-primary float-right">登录</button>
+            <div class="sub_buton">
+                <span class="login_btn">
+                    <button type="submit" class="btn btn-info btn-lg" id="submit_btn">登录</button>
+                </span>
+                <span class="other_btn">
+                    <a href="" class="rest_pwd">忘记密码</a>
+                    <a href="{% url 'register' %}" class="res_user">新用户注册</a>
+                </span>
             </div>
         </form>
     </div>
