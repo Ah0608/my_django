@@ -4,31 +4,19 @@ $('.captcha').click(function () {
         $('#id_captcha_0').val(result['key'])
     });
 });
-$(document).ready(function () {
-    $('.form-login').on('submit', function (event) {
-        console.log(111)
-        event.preventDefault();
-        var formData = $(this).serialize();
-        $.ajax({
-            type: 'POST',
-            url: '/login/',
-            headers: {
-                'X-Requested-With': 'XMLHttpRequest'
-            },
-            data: formData,
-            dataType: 'json',
-            success: function (response) {
-                if (response.flag) {
-                    console.log(response.message)
-                    location.href = 'http://127.0.0.1:8000/index/'
-                } else {
-                    console.log(response.message)
-                    $('.tips').text(response.message);
-                    setTimeout(function () {
-                        location.reload();
-                    }, 3000);
-                }
-            }
-        })
-    })
-});
+
+
+// axios.post('/api/login/', { username, password })
+//     .then(response => {
+//         const { access, refresh, message } = response.data;
+//         // 存储令牌到本地存储或Cookie中
+//         localStorage.setItem('access_token', access);
+//         localStorage.setItem('refresh_token', refresh);
+//         alert(message); // 可以显示登录成功的提示信息
+//         // 导航至登录成功后的页面
+//         window.location.href = '/protected_page';
+//     })
+//     .catch(error => {
+//         console.error(error);
+//         alert('登录失败，请检查用户名和密码');
+//     });

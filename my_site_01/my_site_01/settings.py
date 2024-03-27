@@ -1,12 +1,8 @@
-
+from datetime import timedelta
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-
-
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-800mhq_gawwl@8xijj5k^q-l6bpgv+=@8jjqjbl4&u3b0xs-i0'
@@ -30,6 +26,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'app_01.apps.App01Config',
     'captcha',
+    # 'rest_framework',
+    # 'rest_framework_simplejwt'
 ]
 
 # # 验证码配置
@@ -128,7 +126,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/5.0/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'zh-hans'
 
 TIME_ZONE = 'Asia/Shanghai'
 
